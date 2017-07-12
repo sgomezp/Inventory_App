@@ -19,10 +19,10 @@
     <de.hdodenhof.circleimageview.CircleImageView
 
         android:id="@+id/image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="@dimen/layout_width_96"
+        android:layout_height="@dimen/layout_height_96"
         android:layout_gravity="center_vertical"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/margin_10"
         tools:src="@drawable/ic_empty_store" />
 
     <TextView
@@ -36,8 +36,8 @@
         android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginEnd="@dimen/padding_16"
+        android:layout_marginTop="@dimen/padding_16"
         android:layout_toEndOf="@+id/image"
         android:gravity="center_vertical"
         android:textAppearance="?android:textAppearanceMedium"
@@ -49,10 +49,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_name"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_5"
         android:layout_toEndOf="@+id/image"
         android:gravity="start"
-        android:text="Price: "
+        android:text="@string/label_price"
         android:textStyle="bold" />
 
     <TextView
@@ -73,19 +74,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/product_name"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_5"
         android:layout_toEndOf="@id/product_price"
-        android:text="€" />
+        android:text="@string/euro_symbol" />
 
     <TextView
         android:id="@+id/stock_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_price"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_5"
         android:layout_toEndOf="@+id/image"
         android:gravity="start"
-        android:text="Stock: "
+        android:layout_marginEnd="@dimen/margin_5"
+        android:text="@string/label_stock"
         android:textStyle="bold" />
 
     <TextView
@@ -93,8 +95,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_price"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/padding_16"
+        android:layout_marginTop="@dimen/margin_5"
         android:layout_toEndOf="@+id/stock_label"
         android:gravity="center_vertical"
         android:textAppearance="?android:textAppearanceSmall"
@@ -106,11 +108,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_stock"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_5"
         android:layout_toEndOf="@+id/image"
         android:gravity="start"
-        android:text="Sales: "
-
+        android:text="@string/label_sale"
         android:textStyle="bold" />
 
     <TextView
@@ -118,8 +120,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_stock"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/padding_16"
+        android:layout_marginTop="@dimen/margin_5"
         android:layout_toEndOf="@+id/sales_label"
         android:gravity="center_vertical"
 
@@ -139,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="25dp"
+            android:layout_margin="@dimen/margin_25"
             android:drawableStart="@drawable/ic_add_shopping_cart"
             android:focusable="false"
             android:focusableInTouchMode="false"
@@ -148,6 +150,5 @@
             android:textAppearance="?android:textAppearanceSmall" />
 
     </LinearLayout>
-
 
 </RelativeLayout>

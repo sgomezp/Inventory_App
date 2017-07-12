@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".CatalogActivity"
-            android:label="Products">
+            android:label="Harry Potter's Store">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

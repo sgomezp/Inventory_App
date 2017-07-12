@@ -54,7 +54,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     int mStock = 0;
     String phone = "";
 
-
     // Content URI for the existing product (null if it's a new product)
     private Uri mCurrentProductUri;
 
@@ -85,8 +84,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     // Image Button order to Supplier
     private ImageButton mButtonEditOrder;
 
-    // Sock Variable
-    //private int mProductStock;
 
     // EditText field to enter products sales value
     private EditText mSalesEditText;
@@ -106,7 +103,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      * 0 for in Storehouse, 1 for sent to client, 2 delivered. The client received the product.
      */
     private int mShipment = ProductsEntry.SHIPMENT_STOREHOUSE;
-
 
     //Boolean flag that keeps track of whether the product has been edited (true) or not (false)
     private boolean mProductHasChanged = false;
@@ -128,7 +124,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
-
 
         // Prevent the soft keyboard from pushing the view up
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -225,7 +220,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 openDialer(view);
             }
         });
-
     }
 
     public void openDialer(View view) {
@@ -235,30 +229,39 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         startActivity(intent);
     }
 
+    public int increaseStock(View view) {
 
-    public void increaseStock(View view) {
+        if (mStockEditText.getText().toString().isEmpty() || mStockEditText.getText().toString().equals("")) {
+            mStock = 1;
 
-        mStock = Integer.parseInt(mStockEditText.getText().toString()) + 1;
+        } else {
+
+            mStock = Integer.parseInt(mStockEditText.getText().toString()) + 1;
+        }
         Log.i(LOG_TAG, "mStock es: " + mStock);
 
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(ProductsEntry.COLUMN_PRODUCT_STOCK, mStock);
-        getContentResolver().update(mCurrentProductUri, contentValues, null, null);
+        mStockEditText.setText(Integer.toString(mStock));
+
+        return mStock;
 
     }
 
-    public void decreaseStock(View view) {
+    public int decreaseStock(View view) {
 
-        mStock = Integer.parseInt(mStockEditText.getText().toString()) - 1;
+        if (mStockEditText.getText().toString().isEmpty() || mStockEditText.getText().toString().equals("")) {
+            mStock = 0;
+
+        } else {
+            mStock = Integer.parseInt(mStockEditText.getText().toString()) - 1;
+
+        }
+
         if (mStock < 0) {
             // Warning the user that stock is 0 and can't be updated
             Toast.makeText(this, this.getString(R.string.stock_zero), Toast.LENGTH_SHORT).show();
-        } else {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(ProductsEntry.COLUMN_PRODUCT_STOCK, mStock);
-            getContentResolver().update(mCurrentProductUri, contentValues, null, null);
-
         }
+        mStockEditText.setText(Integer.toString(mStock));
+        return mStock;
 
     }
 
@@ -360,36 +363,35 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return;
         }
 
-        if (TextUtils.isEmpty(nameString)){
-            Toast.makeText(this,"Name cannot be empty", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(nameString)) {
+            Toast.makeText(this, getString(R.string.name_missing), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (TextUtils.isEmpty(priceString)){
-            Toast.makeText(this,"Price cannot be empty", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(priceString)) {
+            Toast.makeText(this, getString(R.string.price_no_empty), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (TextUtils.isEmpty(supplierString)){
-            Toast.makeText(this,"Supplier phone cannot be empty", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(supplierString)) {
+            Toast.makeText(this, getString(R.string.supplier_no_empty), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (TextUtils.isEmpty(salesString)){
-            Toast.makeText(this,"Sales cannot be empty", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(salesString)) {
+            Toast.makeText(this, getString(R.string.sales_no_empty), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (TextUtils.isEmpty(stockString)){
-            Toast.makeText(this,"Stock cannot be empty", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(stockString)) {
+            Toast.makeText(this, getString(R.string.stock_no_empty), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (TextUtils.isEmpty(imageString)){
-            Toast.makeText(this,"Image cannot be empty", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(imageString)) {
+            Toast.makeText(this, getString(R.string.image_no_empty), Toast.LENGTH_LONG).show();
             return;
         }
-
 
         // Create a ContentValues object where column names are the keys,
         // and product attributes from the editor are the values.
@@ -397,13 +399,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(ProductsEntry.COLUMN_PRODUCT_NAME, nameString);
         values.put(ProductsEntry.COLUMN_PRODUCT_SHIPMENTS, mShipment);
         values.put(ProductsEntry.COLUMN_PRODUCT_SUPPLIER, supplierString);
-        //values.put(ProductsEntry.COLUMN_PRODUCT_STOCK, stockString);
-        //values.put(ProductsEntry.COLUMN_PRODUCT_SALES, salesString);
         values.put(ProductsEntry.COLUMN_PRODUCT_IMAGE, imageString);
 
         // If the price is not provided by the user, don't try to parse the string into an
         // integer value. Use 0 by default.
-
         int price = 0;
         if (!TextUtils.isEmpty(priceString)) {
             price = Integer.parseInt(priceString);
@@ -635,8 +634,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 Toast.makeText(this, getString(R.string.editor_delete_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
-
-
         }
         // Close the activity
         finish();

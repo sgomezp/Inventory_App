@@ -103,7 +103,6 @@ public class ProductCursorAdapter extends CursorAdapter {
         // Update the TextViews with the attributes for the current pet
         productNameTextView.setText(productName);
         productPriceTextView.setText(productPrice);
-        //productStockTextView.setText(String.format(productStock));
         productStockTextView.setText(Integer.toString(productStock));
         productSalesTextView.setText(Integer.toString(productSales));
         productImageTextView.setText(productImage);
@@ -126,8 +125,6 @@ public class ProductCursorAdapter extends CursorAdapter {
                     values.put(ProductsEntry.COLUMN_PRODUCT_SALES, newSales);
                     context.getContentResolver().update(uri, values, null, null);
                 }
-
-
             }
 
         });

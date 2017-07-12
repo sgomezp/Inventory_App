@@ -69,7 +69,7 @@
     <string name="editor_insert_product_failed">Error with saving product</string>
 
     <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
-    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+    <string name="empty_view_title_text">It\'s a bit lonely here &#8230;</string>
 
     <!-- Subtitle text for the empty view that prompts the user to add a pet [CHAR LIMIT=50] -->
     <string name="empty_view_subtitle_text">Get started by adding a product</string>
@@ -120,8 +120,23 @@
 
     <string name="sales_zero">The product\'s stock is 0. You can\'t sales this product</string>
 
+    <string name="price_no_empty">Price cannot be empty</string>
+    <string name="supplier_no_empty">Supplier phone cannot be empty</string>
+    <string name="sales_no_empty">Sales cannot be empty</string>
+    <string name="stock_no_empty">Stock cannot be empty</string>
+    <string name="image_no_empty">Stock cannot be empty</string>
+
     <string name="hint_product_sold"> Quantity of products sold</string>
     <string name="name_missing"> Product name can not be empty</string>
     <string name="error_name_blank">All field must be completed</string>
+
+    <string name="label_price">Price: </string>
+    <string name="label_supplier">Supplier Phone</string>
+    <string name="label_sold">Products sold</string>
+    <string name="label_stock">Stock </string>
+    <string name="label_sale">Sales  </string>
+    <string name="euro_symbol">"€"</string>
+    <string name="button_select_image">Select Image</string>
+
 
 </resources>

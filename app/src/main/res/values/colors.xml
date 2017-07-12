@@ -14,4 +14,8 @@
 
     <!-- Primary dark color for the editor -->
     <color name="editorColorPrimaryDark">#394450</color>
+
+    <!--Subtitle color text color for emptyView -->
+    <color name="subtitleTextEmptyView">#A2AAB0</color>
+
 </resources>
