@@ -11,9 +11,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.android.store.R;
 import com.example.android.store.data.ProductContract.ProductsEntry;
 
 /**
@@ -146,8 +144,7 @@ public class ProductProvider extends ContentProvider {
         // Check that the name is not null
         String name = values.getAsString(ProductsEntry.COLUMN_PRODUCT_NAME);
         if (name == null){
-            Toast.makeText(context, (R.string.error_name_blank), Toast.LENGTH_SHORT).show();
-            //throw  new IllegalArgumentException("Product requires a name");
+            throw  new IllegalArgumentException("Product requires a name");
         }
 
         // Check that the shipment is valid

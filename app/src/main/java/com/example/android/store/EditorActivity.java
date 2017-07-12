@@ -348,14 +348,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String stockString = mStockEditText.getText().toString().trim();
         String salesString = mSalesEditText.getText().toString().trim();
 
-
-        if (nameString.isEmpty() || supplierString.isEmpty() || imageString.isEmpty()) {
-
-            Toast.makeText(this, (R.string.error_name_blank), Toast.LENGTH_LONG).show();
-            return;
-        }
-
-
         // Check if this is supposed to be a new product
         // and check if all the fields in the editor are blank
         if (mCurrentProductUri == null &&
@@ -367,6 +359,37 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // No need to create ContentValues and no need to do any ContentProvider operations.
             return;
         }
+
+        if (TextUtils.isEmpty(nameString)){
+            Toast.makeText(this,"Name cannot be empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(priceString)){
+            Toast.makeText(this,"Price cannot be empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(supplierString)){
+            Toast.makeText(this,"Supplier phone cannot be empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(salesString)){
+            Toast.makeText(this,"Sales cannot be empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(stockString)){
+            Toast.makeText(this,"Stock cannot be empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(imageString)){
+            Toast.makeText(this,"Image cannot be empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+
 
         // Create a ContentValues object where column names are the keys,
         // and product attributes from the editor are the values.

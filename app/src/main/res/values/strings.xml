@@ -121,6 +121,7 @@
     <string name="sales_zero">The product\'s stock is 0. You can\'t sales this product</string>
 
     <string name="hint_product_sold"> Quantity of products sold</string>
-    <string name="error_name_blank">All fields must be completed</string>
+    <string name="name_missing"> Product name can not be empty</string>
+    <string name="error_name_blank">All field must be completed</string>
 
 </resources>
